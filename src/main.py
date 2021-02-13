@@ -47,5 +47,4 @@ async def sfwyuribombshortcut(ctx):
     await sfwyuribomb(ctx)
 
 
-# TODO: Get env working
 bot.run(TOKEN)
