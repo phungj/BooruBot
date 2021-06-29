@@ -20,8 +20,9 @@ async def on_ready():
 
 
 @bot.command(name="sfwyuri")
-async def safe_yuri(ctx):
+async def sfwyuri(ctx):
     yuri_list = client.post_list(limit="20", page=random.randint(1, 50), tags="yuri rating:safe")
+
     await ctx.message.delete()
     await ctx.send(yuri_list[random.randint(0, 19)].get("large_file_url"))
 
@@ -35,10 +36,12 @@ async def gm(ctx):
 @bot.command(name="sfwyuribomb")
 async def sfwyuribomb(ctx):
     count = int(ctx.message.content.split(" ")[1])
+
     await ctx.message.delete()
 
     for i in range(count):
         yuri_list = client.post_list(limit="20", page=random.randint(1, 50), tags="yuri rating:safe")
+
         await ctx.send(yuri_list[random.randint(0, 19)].get("large_file_url"))
 
 
@@ -46,5 +49,12 @@ async def sfwyuribomb(ctx):
 async def sfwyuribombshortcut(ctx):
     await sfwyuribomb(ctx)
 
+
+@bot.command(name="nsfwyuri")
+async def nsfwyuri(ctx):
+    yuri_list = client.post_list(limit="20", page=random.randint(1, 50), tags="yuri -rating:safe -age_difference")
+
+    await ctx.message.delete()
+    await ctx.send(yuri_list[random.randint(0, 19)].get("large_file_url"))
 
 bot.run(TOKEN)
